@@ -2,6 +2,9 @@
 
 DIR=`pwd -P` 
 
+# Change working directories
+cd "$(dirname "$0")"
+
 # Read config
 source nonocloud.conf 
 
@@ -29,7 +32,7 @@ if [ "$hash_check" != "$checksum" ]; then
 	echo "[nonocloud] attempting to re-download image"
 
 	# We only attempt to re-download the image once
-	wget -O $FNAME $DL_URL$IMG
+	wget -q -O $FNAME $DL_URL$IMG
 	checksum=`sha256sum $FNAME | cut -d " " -f1`
 
 	if [ "$hash_check" != "$checksum" ]; then
@@ -58,12 +61,12 @@ password: $PASSWORD
 chpasswd: { expire: False }
 ssh_pwauth: True
 manual_cache_clean: True
-
 packages:
  - fail2ban
 EOF
 
 elif [ -n "$SSH" ]; then
+
 echo "[nonocloud] configuring ssh login"
 # Create the cloud-init data for pw auth
 cat > cloudinit.data <<EOF
