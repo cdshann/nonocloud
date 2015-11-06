@@ -2,9 +2,6 @@
 
 DIR=`pwd -P` 
 
-# Change working directories
-cd "$(dirname "$0")"
-
 # Read config
 source nonocloud.conf 
 
