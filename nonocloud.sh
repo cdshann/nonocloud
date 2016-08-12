@@ -9,14 +9,14 @@ source nonocloud.conf
 if [ -z "$BASE_IMG" ]; then
 
 # Download the ubuntu server image and hash
-echo "[nonocloud] downloading trusty image hashes"
+echo "[nonocloud] downloading xenial image hashes"
 wget -q -O hashes $DL_URL$HASH
 
 # Check if backing file already exists
 if [ -n "$FNAME" ]; then
 	echo "[nonocloud] found existing cloud image, checking hash"
 else
-	echo "[nonocloud] downloading trusty64 cloud image"
+	echo "[nonocloud] downloading xenial64 cloud image"
 	wget -O $FNAME $DL_URL$IMG
 fi
 
@@ -96,7 +96,7 @@ virt-install --connect qemu:///system \
 --cdrom cloudinit.iso \
 --network=bridge:$IFACE,model=virtio \
 --os-type=linux \
---os-variant=ubuntutrusty \
+--os-variant=ubuntu16.04 \
 --noautoconsole
 
 # Clean up

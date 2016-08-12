@@ -1,6 +1,6 @@
 ## nonocloud
 
-A very simple script to quickly (and simply) deploy Ubuntu Cloud Images locally with KVM. Currently this script only supports amd64 trusty.
+A very simple script to quickly (and simply) deploy Ubuntu Cloud Images locally with KVM. Currently this script only supports amd64 xenial.
 
 **Usage**    
 Edit nonocloud.conf to update your desired VM configuration. Make sure and update the password field with your       desired password.  
